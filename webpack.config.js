@@ -4,7 +4,7 @@ module.exports = {
   context: path.join(__dirname, '/src'),
 
   entry: {
-    javascript: './js/index'
+    javascript: './js/index',
   },
 
   output: {
@@ -14,9 +14,9 @@ module.exports = {
 
   resolve: {
     alias: {
-      react: path.join(__dirname, 'node_modules', 'react')
+      react: path.join(__dirname, 'node_modules', 'react'),
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
 
   module: {
@@ -24,11 +24,22 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.css$/,  // Add this rule for CSS
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.html$/,
-        loader: 'file?name=[name].[ext]',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },

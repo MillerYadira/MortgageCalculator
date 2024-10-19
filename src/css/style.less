@@ -1,0 +1,182 @@
+// Variables
+@defaultBackground: '/images/sky.jpg'; 
+@altBackground: '/images/hunter.jpg'; 
+@primaryColor: #198eb0; 
+@secondaryColor: #288178; 
+
+.amortization-schedule {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.1); 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-height: 200px; 
+  overflow-y: auto;  /* Allow vertical scrolling if content exceeds max height */
+  width: 100%; /* Ensure the schedule takes up the available width */
+}
+
+.amortization-schedule table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.amortization-schedule th, .amortization-schedule td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: right;
+  color: white;
+}
+
+.amortization-schedule th {
+  background-color: @primaryColor;
+  color: white;
+}
+
+/* Scrollbar styling (optional) */
+.amortization-schedule::-webkit-scrollbar {
+  width: 8px;
+}
+
+.amortization-schedule::-webkit-scrollbar-thumb {
+  background-color: darken(@primaryColor, 20%);
+  border-radius: 5px;
+}
+
+.amortization-schedule::-webkit-scrollbar-thumb:hover {
+  background-color: darken(@primaryColor, 30%);
+}
+
+// Body styling
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh; 
+  width: 100vw;  
+  background: url(@defaultBackground) no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+body.alt-background {
+  background: url(@altBackground) no-repeat center center fixed;
+  background-size: cover; 
+}
+
+.app-wrapper {
+  width: 100vw; 
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+// Semi-transparent image button
+.move-button {
+  position: fixed; 
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.7; 
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10; 
+}
+
+.move-button:hover {
+  opacity: 1; 
+}
+
+// Default container styling
+.container {
+  background-color: rgba(186, 187, 189, 0.3); 
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  width: 500px;
+  max-width: 500px;
+  transition: all 0.5s ease;
+  position: relative;
+  height: auto;
+  z-index: 1; 
+}
+
+// Layout when the button is clicked (side-by-side containers)
+.layout-changed {
+  display: flex;
+  justify-content: space-between; 
+  width: 100vw; 
+  height: 100vh; 
+  align-items: center; 
+  padding: 0 5%; /* Adds padding to the sides of the layout */
+}
+
+.layout-changed .form-container {
+  width: 40%;  /* Form container takes 40% of the screen width */
+  align-self: center;
+}
+
+.layout-changed .output-container {
+  width: 50%;  /* Output container takes more space on the right */
+  margin-left: 10%; /* Push the output container more toward the right */
+  align-self: center;
+}
+
+// Form and output styles
+label {
+  color: white;
+}
+
+input.form-control, select.form-control {
+  border: 2px solid @primaryColor;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+  background-color: rgba(186, 187, 189, 0.3);
+  color: white;
+}
+
+input.form-control::placeholder, select.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input.form-control:focus, select.form-control:focus {
+  border-color: darken(@primaryColor, 10%);
+}
+
+// Button styling
+button.btn-primary {
+  background-color: @primaryColor;
+  border: none;
+  color: @secondaryColor;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button.btn-primary:hover {
+  background-color: darken(@primaryColor, 10%);
+}
+
+.output-box {
+  background-color: rgba(186, 187, 189, 0.3); 
+  padding: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  min-height: 40px;
+  color: white;
+  text-align: center;
+}
+
+.output-box div {
+  margin: 10px 0; // Adds space between Jenny and Pail payments
+}
